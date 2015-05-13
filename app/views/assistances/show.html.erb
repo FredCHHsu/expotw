@@ -1,0 +1,18 @@
+
+<p>
+  <strong>Group:</strong>
+  <%= @assistance.group %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @assistance.title %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @assistance.name %>
+</p>
+
+<%= link_to 'Edit', edit_assistance_path(@assistance) %> |
+<%= link_to 'Back', assistances_path %>

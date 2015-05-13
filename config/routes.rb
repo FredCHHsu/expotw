@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :assistances
+  resources :members
   devise_for :users
 
   get 'pages/motivation'
