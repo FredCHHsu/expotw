@@ -8,3 +8,5 @@
 
 User.create(email: "expotw@gmail.com", password: "optogo2015", password_confirmation: "optogo2015")
 p "Test user created"
+
+Event.create(timeline_pic: "pic", happened_at: "2015-5-19".to_date, content: "在星巴克偷懶")

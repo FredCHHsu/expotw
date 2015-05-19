@@ -1,0 +1,14 @@
+<h1>大事紀</h1>
+<% @events.each do |event| %>
+<%= event.timeline_pic %>
+<%= event.happened_at %>
+<%= event.content %>
+	<% if current_user %>
+	<%= link_to "Edit", edit_event_path(event) %>
+	<%= link_to "Destroy", event_path(event), method: :delete %>
+	<% end %>
+<% end %>
+
+<% if current_user %>
+<%= link_to "New", new_event_path %>
+<% end %>
