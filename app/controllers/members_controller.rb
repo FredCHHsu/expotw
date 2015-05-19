@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
-
-before_action :set_member, only:[:show, :edit, :update, :destroy]
+  before_action :authorize_user, except: [:index]
+  before_action :set_member, only:[:show, :edit, :update, :destroy]
 	def index
 		@members = Member.all
 	end
@@ -45,6 +45,10 @@ before_action :set_member, only:[:show, :edit, :update, :destroy]
 	end
 
 	private
+
+  def authorize_user
+    current_user ? true : (redirect_to root_path)
+  end
 
 	def set_member
 		@member = Member.find(params[:id])

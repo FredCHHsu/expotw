@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	before_action :authorize_user, except:[:index]
 
 	def index
 		@events = Event.all
@@ -37,6 +38,10 @@ class EventsController < ApplicationController
 	end
 
 	private
+
+	def authorize_user
+		current_user ? true : (redirect_to events_path)
+	end
 
 	def event_params
 		params.require(:event).permit(:happened_at, :content, :timeline_pic)

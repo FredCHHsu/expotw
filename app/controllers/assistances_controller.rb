@@ -1,4 +1,5 @@
 class AssistancesController < ApplicationController
+  before_action :authorize_user, except: [:index]
   before_action :set_assistance, only: [:show, :edit, :update, :destroy]
 
   # GET /assistances
@@ -62,6 +63,10 @@ class AssistancesController < ApplicationController
   end
 
   private
+    def authorize_user
+      current_user ? true : (redirect_to root_path)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_assistance
       @assistance = Assistance.find(params[:id])
